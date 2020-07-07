@@ -46,6 +46,9 @@ npm install -g typescript
 2.  old prompt 
     close the old prompt 
 
+https://github.com/nileshdevdas/smang07072020.git
+
+
 
 Data types at typescript 
 /// typescript has data types 
@@ -55,11 +58,76 @@ var password: string = 'xxxx'
 var x : any = 0
 var z : boolean = true;
 
+#############################################
+
+import { Department } from "./example2";
+
+class Employee {
+    // constructor only called when object is created 
+    constructor(public a: string) {
+        console.log("Employee constructor")
+    }
+    /// a method that returns anytype as i did not define one
+    // now defined a return type for the function 
+    getMeMoney(): number {
+        console.log("in Employee..")
+        return 100;
+    }
+
+}
+
+class Manager extends Employee {
+    constructor(public nameofemp) {
+        super(nameofemp); // need te super class constructor to work 
+        console.log("Manaager Constructor")
+    }
+
+    getMeMoney(): number {
+        console.log("in Manager")
+        return super.getMeMoney()+ 0;
+    }
+}
+var empinst = new Manager("username");
+console.log(empinst.getMeMoney());
+console.log(empinst.a)
+console.log(empinst);
 
 
 
 
+Example of inherintecen and supper 
+// the import 
+import { Department } from "./example2";
 
+/// base class ++ export  
+export class Employee {
+    constructor(public a: string) {
+        console.log("Employee constructor")
+    }
+    getMeMoney(): number {
+        console.log("in Employee..")
+        return 100;
+    }
+}
+/// class with extenstion (inheritence) 
+class Manager extends Employee {
+    constructor(public nameofemp) {
+        super(nameofemp); // need te super class constructor to work 
+        console.log("Manaager Constructor")
+    }
+
+    // overriden function
+    getMeMoney(): number {
+        
+        console.log("in Manager")
+        // call parent function
+        return super.getMeMoney() + 10293;
+    }
+}
+var empinst = new Manager("username");
+console.log(empinst.getMeMoney());
+console.log(empinst.a)
+console.log(empinst);q
 
 
 
