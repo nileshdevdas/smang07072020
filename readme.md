@@ -286,6 +286,30 @@ step 4 :   Now test you page adding a boostrap class
 
 
 
+Demo Card Layout 
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-header bg-dark text-white">Component</div>
+        <div class="card-body">xxxx</div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-header">xxxx</div>
+        <div class="card-body">xxxx</div>
+        <div class="card-footer">Copyrith Vinsys</div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-header">xxxx</div>
+        <div class="card-body">xxxx</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
