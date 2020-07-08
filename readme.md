@@ -127,7 +127,26 @@ class Manager extends Employee {
 var empinst = new Manager("username");
 console.log(empinst.getMeMoney());
 console.log(empinst.a)
-console.log(empinst);q
+console.log(empinst);
+------------------------------------------------------------------------------------------------------------Day 2 : 
+1. understand what is angular cli
+2. install a angular cli 
+3. create a new project using the angular cli 
+4. Understand the project scaffolding 
+5. Understand the structure of files and thier contents 
+6. Run the sample application 
+7. Start Angular basics understanding on what is a angular component , angular modules , angular directives, angular pipes services guards intercepts 
+8. new new ng serve , ng build ng generate and related things 
+
+What is angular CLI : 
+Command Line Interface :- 
+Using the CLI you can create a project template in angular 
+
+# i am trying to install a specific version of the cli 
+npm i -g  @angular/cli@7.3.10
+
+
+
 
 
 
