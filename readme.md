@@ -311,6 +311,131 @@ Demo Card Layout
   </div>
 </div>
 
+-------------------------------------------------------------------------------------------------
+Complete angular/cli 
+Complete angular Strcuture 
+Complete angular file system 
+ng serve 
+ng build 
+ng new 
+ng g c (generate component)
+{{}} --> The expression 
+State in the component 
+Module -> A module is like a package 
+angular.json (How it works)
+node_modules 
+npm
+ts Typescript 
+
+Component : ts + css + html 
+select tag 
+Environtment Setup / Project Setup / Components 
+General MVC / Using Npm and Other things ng 
+how to add boostrap or any other dependant libraries to our applcation 
+------------------------------------------------------------------------------------------------
+1. Data Binding 
+    a) oneway   ====> from html to Component ts 
+                ----> from ts to html 
+    b) twoway   from both the sides when ever it changes either side it impacts both 
+
+2. Event Binding (clicks , events )
+
+3. Directives 
+
+4. Pipes 
+
+
+add a new component 
+ng g c <componentname> ==>  Component gets added 
+
+find the location where you wish add the component add the selector tag in the 
+html of the parent component 
+ng serve and check if the parent and child are being rendered 
+
+Add a Movies state to you movies list 
+movies = ['','','','','']
+
+
+We are working with a single page application 
+1. The Page is your framework or your application 
+2. thes session is your environment in which application
+
+Is HelloComponent / Appcomponent the Roor
+The page Root Layout is The AppComponent 
+         Route -> Home --> Href ==> HomeComponent
+                  About-US ->Href --> AboutUsComponent                   
+
+index.html
+    <app-root></app-root>=====> component who has  selector called app-root
+                                        AppComponent:
+                                            app.component.html  // view  template
+                                            app.component.ts // state & behaviour
+                                            app.component.css  // l&f
+                                            
+
+app.component.html 
+    <app-navbar></app-navbar> ========> component 
+                                        NavbarComponent
+                                            navbar.component.html  / view
+                                            navbar.component.ts  / state & behaviour
+                                            navbar.component.css  / L&F
+
+
+    <app-footer></app-footer>
+
+
+
+
+index.html -> root-component-> Renders and rendes html --> It finds furtther component =--> 
+it renders those in those component if i have component ---> 
+
+app.module.ts (Repository (All all component in the module))
+index.html(app-root)
+|
+|-------Root (app-layout)
+          |-------Layout (app-header/app-grid/app-footer)
+                     |-------Header (content)
+                     |-------Grid (app-comp1, app-comp2)
+                               |---------Comp1 (app-movielist)
+                                            |-----MovieList 
+                               |---------Comp2 (content)
+                     |-------Footer (content)
+==============================
+1. ng g c navbar
+2. ng g c footer 
+3. ng g c layout 
+4. ng g c movieslist 
+5. ng g c moviesdetails
+6. ng g c movieratings 
+======================================
+AppComponent 
+    |-------navbar
+            layout
+                |----- movieslist
+                |------moviesdetails 
+                |------moviesratings 
+            footer 
+
+ng new <>
+cd yourproject 
+npm i bootstrap 
+----------------------------------------------------------------------------------------------------
+
+Data Binding :- from component to page (state) {{}}
+                from page to component  (Forms)  
+
+{{}}
+
+Event Binding 
+()
+movielist == component
+ngFor == Directive 
+()  == event binding 
+{{}} == data binding 
+|  === pipe 
+
+Component 
+Pipe
 
 
 
@@ -318,6 +443,29 @@ Demo Card Layout
 
 
 
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------------
+
+
+
+5. Pipes 
+
+6. Routes 
+
+7. Guards 
+
+8. Forms 
+
+9. Security 
+
+10. Angular as Mobile aps 
+
+11.  Testing 
 
 
 
