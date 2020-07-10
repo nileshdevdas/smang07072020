@@ -651,6 +651,24 @@ getMovies(): Observable<any> {
 
                                             
 
+HttpClient is a service its not avialbe in your module you never wrote this service 
+where is it obvuously some one must have writteen who ? Angular where in the module 
+HttpClientModule 
+Now how can i use a service in module while i have not imported module 
+
+1. In you app.module.ts --> you imports  : [ BrowserModule, HttpClientModule]
+now my module is ready to use all the components or service exported by HttpClientModule 
+    // if you remove point 1 you will not be able to inject HttpClient 
+    
+2.  Now in my service 
+        constructor(httpClient: HttpClient){
+
+        }
+
+
+
+
+
 
 
 
