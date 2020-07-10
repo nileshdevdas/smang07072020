@@ -696,7 +696,41 @@ now my module is ready to use all the components or service exported by HttpClie
 
 
 
+Angular is a framework which is client side 
+The services play a major role of bring the application data 
 
+
+=============================================================================
+Service using Node Express for api's 
+1. mkdir serviceapi 
+2. cd serviceapi 
+3.  npm init -y 
+4.  npm install cors 
+5.  npm install express 
+6.  npm install body-parser 
+7.  npm install cookie-parser 
+8.  the file serviceapi.js 
+9.  node serviceapi.js 
+10. open your browser and http://localhost:3000/movies
+11. setInterval to show you the auto refresh function in angular 
+=============================================================================
+var express = require("express");
+var cors = require("cors");
+var app = express();
+app.use(cors());
+var movies = ['James Bond', 'Indian Jones', 'Shelock Holmes', 'Poirot']
+app.get("/movies", (req, res) => {
+    res.write(JSON.stringify(movies));
+    res.end();
+});
+
+app.listen(3000, () => {
+    console.log("Launched the server ");
+});
+
+setInterval(() => {
+    movies.push('xxxxxx');
+}, 3000);
 
 
 
