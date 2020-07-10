@@ -440,20 +440,187 @@ Pipe
 
 
 
-
-
-
-
-
-
-
-
-
 -------------------------------------------------------------------------------------------------
+How to build to component 
+How to make use of the pipes  | date , curreny , uppercase . ... 
+How to make use of the components in the page 
+How to make the components display content and Create Child Components 
+How to make state binding {{}}
+How to make State iteration *ngFor 
+How to make use of the Action Event binding ()
+How to make use of style sheets bootstrap  in our code 
+How to make ng build and deploy it on external server 
+How to make use of the ng serve to run you applicatiokn 
+Role of the angular.json 
+Role of the Typescript 
+Role of ts files and the html css that make component 
+What angular cli ng build , ng serve ng g c 
+What is the use of npm install where -g is global and without -g is local 
+    for project dependencies we should not use -g 
+    for tool and global dependency we should use -g (IF you are installing cli -g is required)
+    but if you are install a project library bootstrap you dont need -g 
+We have seen how augury pluging works debug of state + component hierachy 
+We have also seen we can type script debug if --prod is not enabled and allow map files 
+We have how to make use css and use of the component css and we have not create component roles 
+    navigator / footer / layout / movieslist / moviesdetails .... (Component model) 
+We also seen what is module  
+        Collection the components, the import of moudles 
+        |---- Modules 
+                a) Declares components 
+                    pipes, directives, components, guards 
+                b) Provides Services 
+                    non ui components 
+                c) Imports Other Modules
+                    i depend on external module unless i import i cannot use it  
+                d) Boostraps its own start up Classes 
+                e) exports 
+                        if you wish to create a component and let other modules 
+                        use you component then you must export to let the 
+                        other modules import and use the component 
+                
+---------------------------------------------------------------------------------------------------
+Pattern : Singleton : ? 
+A service is a non ui component 
+A service is injectible component 
+A serviec is singleton (Single Instance )instantiated only once in framework 
+A service is shareble 
+A service is something which would carry statless reusable business logic or 
+    immutable state for the ui 
+A service can bind two components 
+A service is reusable peice of code 
+                            Component 1                 Component2
+                                 |                          |
+                                 ----------------------------
+                                                |
+                                            Service 1 (Single instance )
+This the most important part of the configuraotin wher the weaving of the angular componenetn 
+when there is no service Service :- 
+
+Single Ton ( Single instance ) Lazy and Eager :- whoever calls first that time the instance gets created but next time any one calls the same instance is always returen 
+Eager : as soon as the frameword the page is up the instance is created and every time any one calls 
+the simple activity is to return the instance 
+What goes in my instances (Shareable business logic  )
+Shareable immutable data Genrally if you dont want the data to be changed by any one 
+or any static / globals any such things are implemented here 
+
+<button (click)="fetchData()">
+Your Html -->(click) 
+    Component (function)  fetchData()
+         ----> Service ---->    fetchInfo()
+                    Http API ---->  http.get('url')
+                            ---->Rest API 
+                                    -----> Json 
+                    HttpResp<------
+            <------
+    <--------
+{{}}
+Async in java script things are async calls Promise : is the most
+-----> Request to the Caller and i dont wait 
+    --> Register a call back saying tha hey i have called you please promise when you are done 
+        you will call my call back 
+Hey Nilesh give me data ---> I am busy 
+    okay no issue when you done give me call back 
+         ? Register a function as call back function -> 
+         This allows me to do things in promisory way 
+From your traditional Call as Call - Invoke --- Wait Return 
+                             Call Invoke Return 
+                                            Reverse Invoke 
+On A click of a button -> Call something i may take time and then it may call back my response 
+
+Work on the sync version 
+Move to aysnc version 
+move to the implementation of end to end services: 
+
+What is a service : 
+service is a singleton 
+How can i create a service 
+ng g s  (Creates service)
+
+How can i use the service : 
+you can use the service by dependency injection :- 
+    dont call me i will call you 
+    you will not instantiate or find the service just inject it 
+    in you components constructor jjust inject type and the angular will find 
+    the object type and give us the reference 
+
+What should i write in my service 
+    any business logic 
+    any compute logic 
+    any logic to fetch data from server 
+    any sharing logic 
+    any logic that is common goes here 
+
+Where i am going to create small a service --> 
+What make a component a component 
+@Component makes this as a component 
+What makes a service a service 
+@Injectible makes this as a service 
+
+Thats what it means :- for the framework 
 
 
 
-5. Pipes 
+
+
+
+How to create a service : 
+ng g  s  ---> creates a service 
+how is a service service 
+@Injectible 
+How to use the service 
+A service is injectible in your Component 
+how 
+You Can directlye 
+constructor(yourvar:ServiceClasss) // How does this work 
+Angular Internally check that oh i have a constructor of type x variable 
+It goes in the service registery an fetches the service type and injects it : 
+Hence its known as dependency injection :- 
+We would be put the responsibility of finding the service and getting the detail injected to angular
+and not us : dont call me i will call you is what angular say : inject service just refere me 
+
+
+
+
+
+1. Create a service ng g s <yourservice name>
+2. now moveyou movies into the service while maitaining the movies data binder varibale intact 
+    in your component however you can use different name inthe service or same 
+3.  like you service make variable private 
+    export Class FetchMovieService {
+        private movies = ['','' ,''] // ideally these values would come from the webservice /api
+
+        getMovies(){
+            return this.movies; 
+        }
+    }
+
+4. how to use service 
+     in any component where you wish to use the service :- 
+     in the constructor of that componenent you need to inject the service 
+     a)  var: ServiceType  if you declare 
+            public var :  ServiceType then it also exposes a local variable 
+            public fms : FetchMovieService 
+            automatically exposes fms variable as a part of the object 
+
+            any where in the code you can this.fms.xxxx where xxx is varibale(public) and methods 
+        you local data binded variable ==> is getting changed by a call to the service ... 
+        this.movies = this.fms.getMovies()
+
+
+                                            
+
+
+
+
+
+
+
+
+
+
+
+
+5. Services 
 
 6. Routes 
 
