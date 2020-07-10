@@ -607,6 +607,48 @@ and not us : dont call me i will call you is what angular say : inject service j
         this.movies = this.fms.getMovies()
 
 
+I want first time to introduce a module ussage 
+HttpClient --> is  service which available in the HttpClientModule 
+and i will need to import the HttpClientModule in my modules first if i wish to use 
+HttpClient 
+
+
+Your service now wishes to talk to http : - 
+1. HttpClient is service that is what you will do tofetch 
+    get/post/put/delete/options/head 
+
+2. The HttpClient cannot be used unless and untile the module exports it is imported in your 
+    module you module need to depnd on the http module 
+    import : [ 
+        BrowserModule, 
+        HttpClientModule
+    ]
+3.  Remember HttpClient is service so it need to be injected : 
+    Ohh byu i am already a service can inject a service inside a service yes (Composite)
+    a service can be export to be injected in  component or other service singletons 
+    in your service in your constructor of the service 
+    constructor(httpClient: HttpClient) // this will fail if you dont have the Imported module 
+        HttpClientModule
+
+4. now your component will be getting promise when service function called for this 
+getMovies(): Observable<any> {
+    /// the movies_url is a constant centralized in one file
+    return this.httpClient.get(MOVIES_URL);
+  }
+
+  5.  Your component now should be subscribing it 
+         this.fms.getMovies().subscribe((data) => {
+      this.movies = data;
+    });
+    obs = this.fms.getMovies(); 
+    obs.subscribe((data)=>{
+        this.movies = data;
+    });
+
+    // (data)=>{}
+
+
+
                                             
 
 
