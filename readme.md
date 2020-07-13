@@ -738,6 +738,323 @@ setInterval(() => {
 
 
 
+How to write Angular Services 
+How to make use of Http 
+What is meaning import modules 
+What is state model of gettting data by observer and callback 
+Api Mocky.io and Also wrote our own webservice using express 
+Node is a practical way to express based servies 
+
+The world is all about json as long as you json is good you data is good 
+server side data --> Converted in client model in the call backs :- 
+Routes:- 
+
+MERN / MEAN /// Node (http webserver)
+
+
+JavaStack (Tomcat Pages) 
+Mongo =====> Couch | cassandra | sql Server ---> 
+Spring / Jersey
+Angular
+Java 
+
+IIS 
+DB  
+.ASPX WebServcs(RestAPI)
+angular 
+.NET 
+
+
+DB 
+Flask/DJango 
+angular 
+python 
+
+
+DB 
+Revel / Gin 
+angular 
+Golang 
+
+=============================================================================
+Typescript
+Classes 
+Exports 
+Functions 
+angular cli 
+ng new / ng build / ng generate /ng serve
+Components 
+Directives 
+Pipes
+How component HIerarchy works 
+Databinding
+Event Binding 
+How Add State to the component 
+How to Create Bootstrap additions 
+We have seen how to make use of Augury 
+Angular.json 
+What npm and node modules 
+How {{}} // espression works *ngFor 
+Services How to write service how to dependecny injection
+We have seen services and call to http So now we know how to get data from service side 
+We have seen a sample mocky api as well we used express and use the api to be written by us 
+we have seen how we can combine the complete appliction 
+A client --> Clikc to angular component to service to http to api and back again 
+we have also seen the implementation of how client side debug works 
+-----------------------------------------------------------------------------------------------------
+Routes :- 
+Routing : Subrouting : Page Creation 
+Forms and Templates 
+
+A home page is index.html - is no home page because in angular everything is a component 
+So for me the index.html geenrally is my spa boostrapper : it simply boostraps my angular framework 
+and i dont wish to use it other than for boostrapping . 
+
+The ideal thing what i consider as a page is 
+1)  A Component :- the component is the page 
+    HomePage-> Component 
+    AboutUs -> Component 
+    Movies  -> Component 
+    TeleVision -> Component 
+    Theatre  -> Component 
+2) When  Click on a link i am not supposed to change page i am suppose replace components 
+    <a href="home">Home</a> then my job is not to go home.html but stay on on index.html 
+        and just replace the DOM <router-outlet> --> Place holder 
+        <a href="home">Home</a>
+        <a href="home">About-Us</a>
+        
+        <router-outlet>
+            <app-aboutus></app-aboutus>
+        </router-outlet>
+    The router outlet is like a place holder where the components willbe rendered 
+    <app-navbar>
+        <a href="home">Home</a>
+        <a href="home">About-Us</a>
+    </app-navbar>
+    <router-outlet>
+    </router-outlet>
+    <app-footer>
+    </app-footer>
+
+How do i come to know what is to be rendered where and when ? 
+a) I need to somewhere create a router repository ? 
+   what is router repository ? 
+   i) what is the path  /home  and what is the component tied to the path HomeComponent 
+   ii) where should this component rendered  <router-outlet>
+   iii) chances is that this route further has a child route .... 
+
+        Home 
+        News | Events 
+        ----------------
+        This means we are dealign with somethign like child Routes: 
+        Children for a route and must render only withing parent 
+            <router-outlet></router-outlet> is  child rendered inside the homecomponent 
+
+Problem 1 : What is if bookmark the route and tommorow without singing in use the route ? 
+            i need security interception before some get to see the route / Url 
+            How to do this ? 
+
+Problem 2 :  i may want also do certain validation configuratoin parameterization during the 
+            call to the routes ? 
+            Guards how guards will be handle this 
+
+
+--------------------------------------------------------------------------------------------------------
+How can i enable routing  ?
+Routing is a part of RouterModule 
+Like earlier to this you were not able to HttpClient as its was a part of the HttpModule 
+
+To use a router or routing functions it is mandatory to use RouterModule 
+Where do i add the router module :- 
+app.module.ts --> This is my root module --> Every Angular application has root module 
+    in my case app.module.ts is my root module 
+    @Module (
+
+        imports : [],
+    )
+
+Step 1 before importing a module its import to import it s class 
+    import {RouterModule}  from '@angular/router' // this is for importing the routerMOdule class 
+
+    imports : [
+        BrowserModule, 
+        HttpModule, 
+        RouterModule.forRoot()
+    ]
+
+Step 2.  Some must tell the routerModule what are the routes with which it has to instantiaate 
+         const routes : Route[]= [
+             {
+                 path = "" , component : HomeComponent
+             },
+             {
+                 path = "aboutus" , component : AboutUsComponent // ng  g c Home // ng g c aboutus
+             }, 
+             {
+                 path = "movies" ,  component : MoviesComponent
+             }
+             {
+                 path = "tv"  , component : TelevisionCompoent
+             },
+             {
+                 path = "theatre"  , component : TheatreComponent 
+             }, 
+             {
+                 path = "**" , component : OopsComponent
+             }
+         ]
+
+         http://localhost:4200/
+
+
+
+
+
+1. You willenable the RouterModule 
+2. You will create a const array of routes which contain 
+    path / component mapping 
+3. you will pass this const array to the RouterModule.forRoot(routes)
+4. you need to decide where to place your page view 
+    <router-outlet></router-outlet> the location where pages will be viewed 
+5. You need to create you navbar in such a way that when you click the navbar 
+    it automatically renders the right page at the right location 
+you will need to add the routerLink to the you navigator     
+===============================================================================================
+Goal is to achieve the implementation of routes : 
+1. Routes are use for navigation but beware we dont navigate other pages we navigate to other 
+    components 
+2. In angular Pages are components 
+3. Navigation is rendering the component int he router-outlet the location where you wish to place 
+    the component and show it when the a specific link (Route) is clicked 
+4. The Route or the navigation in Angular will not work unless and until you add the router module 
+5. The Route is the main part which identifies which path = which component and hence this is 
+the best combination you do by writing these rules in array and passing these to the RouterModule 
+6. The Routes are something which dont refresh page 
+
+
+
+Step 1 : 
+Create as many as components you want to create in the forms of pages 
+Home 
+Movies
+Television
+Threatre
+About
+Help 
+ng g c  home 
+ng g c  movies 
+ng g c  television
+ng g c  theatre 
+ng g c  about 
+ng g c  help 
+------------------------------------------------------------------------------------------------
+
+You need to create a File that decides 
+a) which route  is which component 
+
+b)  You need to importthe RouterModule ad this const in the imports 
+
+c) 
+
+
+
+
+
+
+
+1. Whether you have create components = pages 
+2. Whether you have create the routes configuration path and component 
+3. whether you have added the route module and .forRoot() passed the route config 
+4. Wherther you have placed the right location of the router-outlet 
+5. You will just open the browser and http://localhost:4200 you shoudl see you homecomponent 
+    http://localhost:4200/movies  /xx /yy /zz whateever its 
+    and finally work with the  links 
+
+
+
+
+
+
+
+
+
+1. every page is component 
+    ng g c movies 
+    ng g c television 
+    ng g c theatre 
+    ng g c home 
+    ng g c aboutus 
+    ng g c help 
+
+2.  The component will be bound to a mapping router 
+    app.route.ts 
+
+    [
+        {path : ''  , component : HomeComponent}
+    ]
+
+3.  Add the RouterModule
+// ----------------------------------------------------------- //
+import { RouterModule } from '@angular/router';
+import { routes } from './app.routes';
+// ----------------------------------------------------------- //
+
+a) the routes in the app.router
+b) app.module.ts 
+RouterModule.forRoot(routes)
+
+<router-outlet></router-outlet>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
