@@ -1009,6 +1009,140 @@ RouterModule.forRoot(routes)
 
 
 
+1. Every page is component 
+    When you clikc a link you actually render a component in the place of the router-outlet 
+    instead of refreshing a page hence you need to understand that this is actually 
+    a dom change that you are going into 
+
+2. Every page first needs to be created as componet 
+    ng g c home 
+    ng g c movies ....... 
+
+3. Every single page we created is a component and will need to be binded to a route path
+this can be done using a simple route configuration 
+
+    const routes = [
+        {
+            path : '' ,  component : HomeComponent
+        }, 
+        {
+            path : 'movies' , component : MoviesComponent 
+        }
+    ]
+
+4.  While we work with this :- this routes to be registered in some location : that is 
+        the routes forRoot 
+
+    in our app.module.ts we need to have 
+        RouterModule imported :- 
+        The ROuterModule imported will do the following :- 
+
+    a) The RouterModule :-   imports 
+                            RouterMOdule.forRoot(routes)
+5. where do i want the routes to rendered the routes to be rendered are in a location 
+<router-outlet></router-outlet>
+
+
+6.  how will my links get enabled 
+    [router-link]= []
+
+
+7.  Add a Route 
+    Ratings 
+    Events 
+    PReviews 
+
+
+====================================================================================================
+<ng-template  #mytemplate1></ng-template>
+
+----------------------------------------------------------------------------------------------------
+
+For Forms:- 
+You need form for submitting data back to the server for 
+Create
+Update 
+Delete 
+End Post / Put / 
+
+Our World is all about JSON (JavaScript Object Notation)
+1. The first part for the forms is forms is a part for a module FormsModule 
+
+
+
+How to use forms :- 
+To use forms we need to first enable formsModule 1 
+imports  : [
+    BrowserModule,
+    HttpModule, 
+    RouterModule, 
+    FormModule, /// this will enalte ngModel
+]
+
+You can create an general html 5 form but to bind the html 5 form to the model of
+{{}} ==> get data from component to page 
+[] ==> from page to component 
+() -=> event 
+[()] => two way --> this is how things would work on the whole 
+
+
+g
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
