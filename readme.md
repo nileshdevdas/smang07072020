@@ -1091,9 +1091,214 @@ g
 
 
 
+-----------------------------------------------------------------------------------------------------
+1. Forms 
+    a) How do i work with forms in my angular application 
+        you will need to enable the formsModule
+        app.module.ts is your application's root modules (this the module which bootstraps)
+        your root components (Can i create more sub modules yes)
+    
+    b)  FormsModule is actviate : by adding it to the imports section of your app.module.ts 
+
+    c)  lets create a form and do the binding:-
+        export class User{
+            email;
+            password;
+        }
+
+        # login.component.ts ---->
+        export class LoginComponent{
+            //user: User = new User();
+            email ; 
+            password; 
+            constructor(){}
+            onNgInit(){
+            }
+            handleForm(){
+                // call to service to take my username and password and do the job 
+            }
+        }
+
+    d) these values need to bound using [(ngModel)] bound to the form fields 
+        two way binding --> 
+            when the form changes ---> State changes 
+            when the changes the ---- > form changes 
+
+    e)  How to ceeate a form 
+            <form (ngSubmit)="handleForm()">
+                    <label></label>
+                    <input type="text" name="email" [(ngModel)]="user.email">
+                    <label></label>
+                    <input type="text" name="email" [(ngModel)]="user.email">
+                    <label></label>
+                    <input type="text" name="email" [(ngModel)]="user.email">
+                    <label></label>
+                    <input type="text" name="email" [(ngModel)]="user.email">
+                    <input type=submit value="xxxxx">
+            </form>
+
+1. You open page --. You get to see a Component LoginComponent : 
+2. You Enter you username and your password and you submit ---> 
+    handleForm()
+3. the Handle form method --> Service LoginService login()
+4.  http ---> WebService ---> Database and Whetthere the passed user and password is valid and if so 
+        issue a session token 
+5.  i am going to take the token keep where ? 
+    sessionStore.putItem(token) // i am storring a key value in my sessionStore 
+6.  in my navigation component i need tcheck if user logged 
+        ngOnInit(){
+                sessionStore.getItem("key")
+                isLoggedin is true 
+        }
+7. as soon as i login in this case i wish to send a event to the navbar component :- 
+    so that we can start showing the buttons 
 
 
 
+
+
+
+1. ng g c login
+2. login.component.html 
+
+
+Publish / Subscriber model 
+
+
+the subscriber code 
+
+ this.loginService.getSubscriber().subscribe((data) => {
+      this.loggedin = data;
+    });
+  }
+
+
+The publisher code 
+ this.loginService.getPublisher().next(this.user);
+
+Service Code : 
+ export class LoginService {
+  private loginSubject: Subject<any> = new Subject();
+  constructor() { }
+  getSubscriber() {
+    return this.loginSubject.asObservable();
+  }
+  getPublisher() {
+    return this.loginSubject;
+  }
+
+}
+Router Gaurds are guards that will ask me to stop those bookmars and also check every time a route is loaded 
+wrhter the user is logged in or not :- else it will reject to show that links 
+
+
+
+Roouter  Guards : Simply Interceptors :- 
+
+u make a call to the url --> Router ---> I have guard applied ---> Function tocheck all the logicalities 
+whether this should be allowed on not if yes it return true if not it retunrs false 
+what i am going to do it 
+
+Guard 1 : Guard 2 : Guard 3  : Gaaurd 4  
+[]
+
+
+How to create a  a gaurd 
+
+
+
+
+What is guard in everuthing is a class 
+a) Guard i an injectible serivce 
+b) Guard is a specific type of a service implents CanActivate  
+c) canActivateMethod of the guard 
+    decide and return boolean value based on the requeted url 
+d)  a guard must be activated on a route bu adding it to the routing configuration 
+         canActivate : [YourClass]
+
+
+How does it work 
+Step 1 : 
+ng g  g   auth 
+This will create a Guard for you 
+You need to add you authenticatioj/authorization logic 
+if (sessionStorage.getItem('loginUser')) {
+      return true;
+
+    } else {
+      console.log("Hey not logged in...")
+      return false;
+    }
+
+The Next thing i wish to do is that activate The guard on the router 
+in your routes :- 
+ { path: 'movies', component: MoviesComponent, canActivate: [AuthGuard] },
+
+
+
+
+sessionStorage is intact till the browser is intact 
+
+localStorage is to the local browser as long as you site was open and you did not clear cached or 
+clean browser it will exist 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2. Intercommunications 
+
+3. security 
 
 
 
