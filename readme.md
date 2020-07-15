@@ -1242,20 +1242,204 @@ sessionStorage is intact till the browser is intact
 localStorage is to the local browser as long as you site was open and you did not clear cached or 
 clean browser it will exist 
 
+# What we covered 
+Type script :- 
+Datatypes 
+Classes and Export 
+Interface 
+Functions 
+Namespace : Package / Imports 
+Typescript finally get compiled to  javascript 
+how to run the javascript using the Node 
+
+What is angular and that we understood the angular cli 
+npm : npm install -g @angular/cli@version 
+
+Created project --> imdbapp 
+
+Component : CSS/ TS / HTML 
+How to bind data to the component 
+Eventbinding 
+Data Binding 
+FormBinding 
+Directives ngFor ngSubmit , ngIf ;else <router-outtles>
+How we can make use of templates 
+ngOnInit --> Lifecycle : how a Component Ready to serve contnet 
+How to write services and 
+During service we underrstood what dependency injection 
+While in service we also had look at the http Module and how we can access the http client to 
+access removte service (Mocky.io) dummy services 
+Routes and understood how routes work 
+Rxjs Objserbles and Subject 
+How tow components can talk to each other using rxjs Subject and Observables Using 
+Where event should be executed from one component and subscribed by the others for understing intercommunication 
+Secuityt in terms of login : 
+a) hoiw tmake using authentication 
+b) Router Guards will help us 
+c) How the sessionStorage is ues 
+d) Diff between session storage and localStorage
+
+Cli 
+ng new ng serve ng build ng generate (components : Services  : Guards  and new applications )
+
+ng build :- it gerneatest the dist which we can copy directly deploy on our webserver 
+ng serve is only for development mode the actual production 
+ng build --prod  --> Generate binaries with .map file so no code trace back and what ever gets generated 
+            you wil deploy on the webserver 
+            ngxin / apach / Iis
+
+@injectible 
+@Componet 
+@ngModule 
+@Pipe 
+
+How angular.json impacts and where to add the styles.css / any css and js files that you wish to bundle 
+
+How to create a complete application with boostrap layout and work with angular components 
+
+
+Routing . Router MOdules , Route configuration , Route Guards Can Activates , Routing implementation in our appplication 
+--------------------------------------------------------------------------------------------------------------------
+ChildRoutes 
+Parent Child Communication 
+
+Security BestPractice (Using OAuth  with Auth.js )
+and we will talk creating our own pipes and decorators 
+
+ng test :- 
+Testing unit testing 
+
+===========================
+The https and csrf :- 
+===========================
 
 
 
 
+==========================
+
+what are child routes and why does one need childroutes 
+Every single route could be a single application in itself 
+movies
+
+To create nested or child Routes 
+
+1. You need to have a Parent Route Selected 
+2. in the parent component which is the part for the route e.g. movies 
+    MoviesComponent 
+        |===== movies.component.html 
+                        |---- you will need to add  <router-outlet></router-outlet>
+Hence your movie component needs to be having : router-outlet>
+3. you also need to create routerLinks   /movies/*  // you are creating child routes for the route /movies 
+
+4. building the route file 
 
 
 
 
+1. ng g c thriller 
+   ng g c romance 
+   ng g c war 
+   ng g c scifi
+   ng g c mystery 
+2.  open you app.route.ts 
+# create new routes 
+const movieroutes = [
+    { path: '', component: ActionComponent },
+    { path: 'thriller', component: ThrillerComponent },
+    { path: 'war', component: WarComponent },
+    { path: 'romance', component: RomanceComponent },
+    { path: 'scifi', component: ScifiComponent },
+    { path: '**', component: OopsComponent },
+];
+3. add the routes to the parent children 
+    { path: 'movies', component: MoviesComponent, canActivate: [AuthGuard], children: movieroutes },
+4. add a router-outlet in the parent component where you wish to display the chidl route component 
+5. as usaual add the routerLinks for action
 
 
+index.html --> 
+    <app-root></app-root>
+        ./root.component.htm
+                |-----nav-bar
+                        outlet
+                            <movies>
+                                |-----
+                      footer
+
+==================================================================================================================
+Communicating with the  Parent and Child Model 
+
+From Parent to Child 
+And From Child to Parent 
+@Input() --> From parent to child 
+@Output() =--> from child to parent
+
+if a parent comppnent needs to share a property/attribute or anything with the child the 
+parent would simply pass it in the template of the parent for 
+E.g parent component <app-pr1></app-pr1>
+                            html pr1.component.html
+                                []-> it access a field in my class 
+                                ""-> with square brackets it picks literal values 
+                                <app-ch1 [department]="sales"></app-ch1>
+my child component is  
+
+class CH1 {
+    @Input()
+    department
+}
 
 
+How can a parent component pass a static / dynamic value to the child component:- 
+The parent can pass the static or dyanmic value in the template call in the parent html where is called 
+
+class Parent {
+
+}
+
+parent.component.html 
+    <app-child parentData="xxxxx" ></app-child>
+    the abovve is to pass static data why because the left hand side use no [] brackets so dentotes 
+    that right hand side is a literal 
+
+    <app-child [parentData]="xxxxx" ></app-child>
+    now the above denotest that xxxxx is  property in the parent that should be send downwards to the 
+    child componet if i change the parent component genre the amovies shown in the chhild component 
+    should be as per the selected genre 
+class Child {
+
+    @Input() // the moment you say @Input() you are ready to accept attribtues from the parent 
+    parentData;
+}
+
+child.component.html 
+{{parentData}}
+
+Now there is rever communication 
 
 
+Step 1 : Create a  parent component 
+ng  g c parent1
+Step 2 create a child component  
+ng  g c child1 
+Step 3 now place you parent component where you wish to see it 
+<app-parent1></app-parent1> // app-component.html 
+Step 4 : now place your child component inside the parent component this cannot be anywhere eslse 
+as you proclaim that this the chidl component of the parent compoinent 
+open the parent1.component.html 
+    <app-child1></app-child1>
+    here is the tag where you can pass parameter downwards 
+    <app-child1 category=""></app-child1>
+    category is a way where you can add the configuration :-  values 
+step 5 : in you child class ---> 
+        @Input()
+        category --> the value will come in this attribute only and only if you have 
+        @Input mapped 
+Step 6  now whether dynamic or static : is what you need to decide 
+        <app-child1 category="anyvalue"></app-child1> // static way 
+        <app-child1 [category]="anyvariable"></app-child1>
+    anyvariable ; a varibale in you parent so when the parent change you want percolate the change 
+    to the child element 
 
 
 
