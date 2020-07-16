@@ -1436,10 +1436,692 @@ step 5 : in you child class --->
         category --> the value will come in this attribute only and only if you have 
         @Input mapped 
 Step 6  now whether dynamic or static : is what you need to decide 
-        <app-child1 category="anyvalue"></app-child1> // static way 
+        <app-child1 category="anyvalue"></app-child1> // static way         
         <app-child1 [category]="anyvariable"></app-child1>
     anyvariable ; a varibale in you parent so when the parent change you want percolate the change 
     to the child element 
+
+
+Child to parent Communication :- 
+How does angular do a parent to child communication : 
+
+EventEmitter
+@Output
+
+
+
+
+Step 1 : in your child component : 
+
+class ChildComponent {
+    @Output() cdataEvent = new EventEmitter() // the eventemiiter is from angular
+    cdata;
+    //Every time my property changes i need to fire the event 
+    onNgInit(){
+        setInterval(()=>{
+            this.cdata = Math.random(); 
+            cdataEvent.emit(this.cdata);// broadcast the value to the parent so parent can subscribe
+        }, 5000);
+    }
+}
+
+<parent html>
+<app-child1    (cdataEvent)="onChildChange($event)"> // this is like you are saying yes 
+{{childValue}}
+i wish to subscribe on the event when the cdata Changes ...... 
+in my responsiblity to add the onChildChange() function 
+
+childValue ; 
+onChildChange(event){
+    console.log("xxxx")
+    this.childValue = event;
+}
+
+
+
+
+
+Component - > Component 
+RxjS Subject 
+EventEmittor 
+Parent Child 
+Child Parent 
+SessionStorage 
+LocalStorage 
+Templates 
+Components 
+Services 
+Pipes
+Event binding 
+Databinding 
+Forms 
+Https 
+
+
+
+
+
+
+
+
+1.  download iis , nginx , apache any webserver tomcat 
+    all them have folder or a aplace documentRoot 
+
+2.  nginx --> html folder 
+
+Step 1 :  First install nginx 
+Step 2  :  Start nginx  nginx.exe 
+Step 3 :   go to your project and run 
+            ng build --prod  --> 
+
+        this will create a dist folder in your applicatiokn 
+        so if you app dist\imdbapp
+
+Step 4  copy the contents for the imdbapp folder and paste in the 
+            html folder of nginx 
+
+Step 6  CTRL + Refresh +  open http://localhost:81 
+    you should have you application up and running ; 
+--------------------------------------------------------------------------------------------------------------------
+Day 1 : Typescript 
+Classes 
+Interfaces 
+Functions 
+Generic 
+Namespace 
+Examples 
+
+Day 2 
+Angular Cli 
+Created project 
+npm install @angular/Cli 
+
+Day 3 
+Creating Applications 
+Components 
+Component Hierarchy 
+Augury 
+COmponent is made up 
+Angular.json 
+
+Day 4 
+Lifecycle onNgInit 
+Constsructors 
+Servies 
+Use the Http // mocky.io
+ngFor data 
+
+Day5 : 
+Directives 
+Routes 
+Templates 
+used the implemnetion using 
+Observable 
+Publish Subcribe 
+
+Day 6 : 
+RouterGuards 
+Authentication 
+Routiing Child routes 
+
+Day 7 
+Parent Child
+Angular base Child routes 
+Event Emitter 
+How to create a nginx project 
+ng build --prod 
+how to move it to production 
+
+
+adding and using bootstrap
+How dependency injections work 
+Provider @injectibles 
+
+
+How to use a third party authenticator in your application : 
+Auth0js
+
+
+SSO : Single Sing On 
+Oauth and SAML Systems 
+----------------------------------------------------------------
+i have 200 hundered applications 
+every application if has user the problem is when the user leaves the organization : 
+headache : i need to go to that applications and disable/delete and manage it 
+
+What if some forgets ?
+what if it gets misused ? 
+what if it is billable application ? 
+what if the application is having sensitive data ? 
+what if the application is charged on user licenses ? 
+
+SSO the user registry : could be a single user registry : 
+Teams --> All your users are O365:- 
+
+I need single singon to be enabled in my application 
+When my application signs in it says okay you can go ahead as some one has authenticated you and that 
+some one is a part of my organization policy checker 
+
+
+
+Cross Site Request Forgery : 
+
+You will create forms in you angular application 
+These forms will be submitted to the server but prolem is what happens when i haver service which 
+allows CORS : 
+
+Cross-origin resource sharing : which means that we have to build a application with 
+Allow api to be called from differnt domain 
+
+http://localhost:8080
+    CORS --> If page was served fomr http://localhost:8080 then only you can use service s
+    i am not a cross origin domain :- 
+
+    CSRF :- where youforms are secured 
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------
+
+
+Your Application runs inside a small WebView --> WebView hosts a Cordova / Ionic Server -> Like a webserver
+ANd pages are seen inside the web view of the  Android or the ios application 
+
+HTML Only and not native application -> Applicaation is native by look and feel is non native :- html 
+responsive driven-
+
+1. I can create a single code base and run it for 
+    a)  Android 
+    b)  IoS 
+    c)  Web 
+    d)  Microsoft App
+
+2. if you dont use angular responsive tech with Cordova/ionic then you have multiple code base 
+
+What is cordova : 
+      Cordova is a Open Source platform to allow you to create : 
+        hybrid apps 
+
+
+
+1. Using OAuth with Auth0  authentication :- 
+    your application can make use of any social or enterprise based single (Single Sign on in your application)
+
+2. It Authjs this true for any Application Provider (OneLogin) For any other implmentations 
+
+
+3.  Using  CRSF toknen The CRSF token is to be provided by server side 
+
+4.  What Cordova: 
+      a extentions of html5 applications to work on the client apk/ client ios apps  by bundling using 
+      cordova 
+      a) Andriod Studio
+      b) Andriod SDK 
+      c) Angular Cli and aPplication
+      d) cordava npm installed 
+1.   npm install -g cordova 
+2.   to create a cordova app 
+    cordova create imdbmobileapp  com.vinsys.app  imdbmobileapp 
+3.  Test the blank cordova app : 
+    test in the browser 
+    cd imdbmobileapp  // this is the corodova project that go created 
+    cordova platform add browser  // adding the browser 
+4.  cordova run browser 
+        check if the basic app is working or not if yes :--- 
+Stage 1 complete 
+--------------------
+there is a www folder in you mobile app: 
+IN stage you u need your application output (the ng build output to be stored in the www)
+# this will add the generated ng build to the www folder 
+ng build --prod --base-href .  --output-path C:/imbdappmob/www
+You have overwritten the index.html (corvdova.js ) this added back 
+open index.html in the www
+    <script src="cordova.js"  type="text/javascript"></script>
+  cordova run browser
+Now you application should run inside the cordova :- 
+Stage 2 Complete 
+--------------------------------
+Stage 3:- 
+You will need to check where is your android studio : 
+You will need to check where is your android sdk 
+ANDROID_SDK_ROOT=D:\tools\android\sdk 
+ANDROID_HOME=D:\tools\android\sdk
+
+cordova  platform add android 
+
+# You will have to start your studio 
+# Start the studio 
+
+cordova emulate android 
+# wait around for 15 minutes for app to compile make a apk and installt the apk in the 
+    emulator 
+
+
+# you can download bluestack and install bluestacks :- 
+when bluestack start 
+C:\imbdappmob\platforms\android\app\build\outputs\apk\debug\app-debug.apk
+Drag you apk on the bluestacks to see that the apk is runnign correctly or not 
+
+-----------------------------------------------------------------------------------------------------------
+Testing and how does testing work in the world of angular 
+
+acutual 
+expected 
+
+Some Expectations : 
+a) Title can be nilesh 
+b) h1 should be there 
+c) when click service return "HelloWOrld" 
+
+Asserstions : We need to do asserstions ; asservtive programming and not assumtive programming 
+1.  it provided me impact analysis 
+2.  Fortied components : the application everytime under goes changes will be tested 
+3.  Coverage report (Sonar/Coverage tools ) unit test tells me how many lines covered and how many not 
+    if your coverage report does not cover the the lines in your code which there is trouble people have 
+        not tested the code and defect still arise in the those classes where there is not testing doen 
+4. Test Results : Dashboard so customer can believe what is real with real testing dashboard rather than 
+    a excel sheet 
+
+
+Every Single testing requires a  Tst Bed 
+
+Angular runs inside a browser how can i create a test browser 
+You test will run inside a browser only 
+There should some code that allow to emulate angular :- 
+That something is known as  Jasmine/Karma framewoirk 
+The jasmine 
+
+describe : Describe component/ service 
+beforEach // before Each Test Runs this method run // init 
+afterEach // after the test run you clean up  // destory 
+testBed ---> 
+needs to reconstruct you angular.json  and app.module.ts configuraiton 
+your testbed is your launcher 
+
+it (iterarive test):
+
+
+
+
+Angular Allows you to do testing using Code Testing Karma & Jasmin
+
+
+describe 
+it 
+beforeEach
+afterEach 
+
+TestBed you will need to create : 
+
+beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule
+      ],
+      declarations: [
+        AppComponent
+      ],
+      provider: [
+
+      ], 
+    }).compileComponents();
+  }));
+
+
+
+it('should create the app', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app).toBeTruthy();
+  });
+
+# detect Changes
+fixture.detectChanges();
+    
+ng test # complete testing :- 
+
+# you should not write the component first and then write test 
+# TDD --> Write the test first and then write the component 
+
+
+
+
+
+
+Rest API: and Rest Api Based Applications:- 
+Flask 
+Express 
+Spring 
+.Net 
+
+
+Bootstrap 
+Strong CSS 
+
+Mean (mongo , express, angular , node ) : - 
+Mern 
+
+=============================================================================================================================================
+Writeing API Service 
+Writing angular Material 
+Writing angulr + bootstrap 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
